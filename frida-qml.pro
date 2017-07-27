@@ -1,5 +1,9 @@
-# Modify this if your locally compiled Frida isn't next to this directory
-FRIDA = $$absolute_path("../")
+# Set the FRIDA env-var if your locally compiled Frida isn't next to this directory
+
+FRIDA = $$(FRIDA)
+isEmpty(FRIDA) {
+    FRIDA = $$absolute_path("../")
+}
 
 win32 {
     win32-msvc*:contains(QMAKE_TARGET.arch, x86_64): {
@@ -28,26 +32,26 @@ QMAKE_MOC_OPTIONS += -Muri=$$TARGETPATH
 
 # Input
 SOURCES += \
-    plugin.cpp \
-    device.cpp \
-    process.cpp \
-    maincontext.cpp \
-    frida.cpp \
-    script.cpp \
-    devicelistmodel.cpp \
-    processlistmodel.cpp \
-    iconprovider.cpp
+    $$PWD/plugin.cpp \
+    $$PWD/device.cpp \
+    $$PWD/process.cpp \
+    $$PWD/maincontext.cpp \
+    $$PWD/frida.cpp \
+    $$PWD/script.cpp \
+    $$PWD/devicelistmodel.cpp \
+    $$PWD/processlistmodel.cpp \
+    $$PWD/iconprovider.cpp
 
 HEADERS += \
-    plugin.h \
-    device.h \
-    process.h \
-    maincontext.h \
-    frida.h \
-    script.h \
-    devicelistmodel.h \
-    processlistmodel.h \
-    iconprovider.h
+    $$PWD/plugin.h \
+    $$PWD/device.h \
+    $$PWD/process.h \
+    $$PWD/maincontext.h \
+    $$PWD/frida.h \
+    $$PWD/script.h \
+    $$PWD/devicelistmodel.h \
+    $$PWD/processlistmodel.h \
+    $$PWD/iconprovider.h
 
 OTHER_FILES = qmldir frida-qml.qmltypes
 
